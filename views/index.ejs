@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+    <title>Blogs</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mb-4">Blog Article</h2>
+        <a href="article" class="btn btn-success">New Article</a>
+
+        <%  articles.forEach(article => { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title"><%=article.title%></h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%=article.createdAt.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text mb-2"><%= article.discription%></div>
+                    <a href="article/<%= article.slug%>" class="btn btn-primary">Read more</a>
+                    <form class="d-inline" action="/article/<%= article.id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button></form>
+                </div>
+            </div>
+        <%})%>
+    </div>
+    <!-- <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa fugit, inventore officia aspernatur eveniet repellat, quod, temporibus eaque iste reprehenderit ea nostrum vero. Facilis cumque, accusantium reiciendis soluta sequi in.</h1> -->
+</body>
+
+</html>
